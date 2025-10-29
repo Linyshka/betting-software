@@ -25,5 +25,15 @@ export default defineConfig({
       '@containers': path.resolve(__dirname, 'src/containers'),
       '@hooks': path.resolve(__dirname, 'src/hooks')
     }
+  },
+  server: {
+    proxy: {
+      '/proxy': {
+        target: 'https://belparyaj.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/proxy/, '/pragmatic'),
+        secure: false,
+      }
+    }
   }
 })
