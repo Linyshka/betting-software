@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { GameTypeID } from '../types/api';
+import type { GameTypeID } from '../../types/api';
 
 interface GamesState {
   searchTerm: string;
@@ -11,7 +11,7 @@ interface GamesState {
 const initialState: GamesState = {
   searchTerm: '',
   selectedTypeID: 'all',
-  visibleCount: 20,
+  visibleCount: 63,
 };
 
 const gamesSlice = createSlice({
@@ -20,11 +20,9 @@ const gamesSlice = createSlice({
   reducers: {
     setSearchTerm(state, action: PayloadAction<string>) {
       state.searchTerm = action.payload;
-      state.visibleCount = 20;
     },
     setSelectedTypeID(state, action: PayloadAction<GameTypeID | 'all'>) {
       state.selectedTypeID = action.payload;
-      state.visibleCount = 20;
     },
     loadMore(state) {
       state.visibleCount += 20;
